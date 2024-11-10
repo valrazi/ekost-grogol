@@ -1,14 +1,7 @@
-export type Photo = {
-  albumId: number;
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
-  album: Album;
-};
-
-export type Album = {
-  userId: number;
-  id: number;
-  title: string;
-};
+export * from './user'
+export * from './common'
+export * from './roomType'
+export * from './reservation'
+export * from './booking'
+export * from './keluhan'
+export * from './admin'

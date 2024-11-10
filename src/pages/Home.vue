@@ -171,7 +171,7 @@ onMounted(() => {
     <div 
     id="hero"
     class="flex justify-center items-center flex-col w-full min-h-[500px] bg-cover bg-no-repeat text-white scroll-m-10"
-      style="background-image: url('/public/apartment.jpg')">
+      style="background-image: url('https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/apartment.jpg')">
       <h1 class="text-[4rem] font-bold">Grogol Mansion</h1>
       <h2 class="text-[2rem] font-semibold">"A Higher Quality for Living"</h2>
       <button
@@ -216,7 +216,7 @@ onMounted(() => {
                 :icon="['fas', 'circle-chevron-right']" /></button>
           </div>
           
-          <img src="/public/noimage.png" alt="" class="min-w-64 max-w-64 w-64" v-if="!rt.images">
+          <img src="https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/noimage.png" alt="" class="min-w-64 max-w-64 w-64" v-if="!rt.images">
           <div class="w-full flex flex-col justify-center items-center gap-y-2 min-h-64 max-h-64 text-white">
             <h1 v-if="rt.rooms.length">
               <span class="text-red-400" v-if="rt.rooms.length == 1">Sisa {{ rt.rooms.length }} Kamar</span>

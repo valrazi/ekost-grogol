@@ -201,7 +201,7 @@ onUnmounted(() => {
             <h1 class="text-[2rem]">Lakukan Pembayaran</h1>
             <div class="w-[50%] py-4 h-full bg-white flex flex-col justify-center items-center">
                 <h1>Silahkan lakukan scan QR dibawah</h1>
-                <img src="/qr.jpeg" class="w-1/2" alt="">
+                <img src="https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/qr.jpeg" class="w-1/2" alt="">
                 <div class="w-full flex justify-center">
                     <h1>Total {{ moneyFormatter.format(totalPrice) }}</h1>
                 </div>
@@ -222,7 +222,7 @@ onUnmounted(() => {
         </div>
     </el-dialog>
     <div class="w-full min-h-dvh bg-cover bg-bottom relative flex bg-gr"
-        style="background-image: url('/public/bg-room.jpg');">
+        style="background-image: url('https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/bg-room.jpg');">
 
         <div class="w-1/2 min-h-dvh bg-secondary flex flex-col px-4 py-8" v-if="!activeBooking">
             <h1 class="text-white text-[2.5rem] font-bold px-[1rem]">Form Booking</h1>

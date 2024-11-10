@@ -107,21 +107,32 @@ export const routes: RouteRecordRaw[] = [
 
 export const initMiddleware = (router: Router) => {
   router.beforeEach((to, _, next) => {
-    const authStore = useAuthStore()
+    const authStore = useAuthStore();
+  
     if (to.meta.needAuth) {
-      if (authStore.token) next()
-      else next({ name: 'user-login' })
+      if (authStore.token) {
+        next(); // User is authenticated, allow navigation
+      } else {
+        next({ name: 'user-login' }); // Redirect to login
+      }
+      return; // Stop further execution after redirection or next() call
     }
-    next()
-  })
+  
+    // If no auth requirement, proceed normally
+    next();
+  });
   router.beforeEach((to, _, next) => {
-    const authStore = useAuthStore()
+    const authStore = useAuthStore();
     if (to.meta.needAdmin) {
-      if (authStore.tokenAdmin) next()
-      else next({ name: 'admin-login' })
+      if (authStore.tokenAdmin) {
+        next(); // proceed to the route
+      } else {
+        next({ name: 'admin-login' }); // redirect to admin-login
+      }
+      return; // stop further execution
     }
-    next()
-  })
+    next(); // proceed for non-admin routes
+  });
   router.afterEach(() => {
     window.scrollTo(0, 0)
   })

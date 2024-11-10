@@ -119,7 +119,6 @@ const createRoomType = () => {
                 message: 'Success Create Room Type',
                 type: 'success',
             })
-            getListRoomType()
         })
         .catch((err) => {
             console.log(err)
@@ -131,6 +130,7 @@ const createRoomType = () => {
             return
         })
         .finally(() => {
+            getListRoomType()
             removeLoading()
             closeCreate()
         })
@@ -153,7 +153,6 @@ const updateRoomType = () => {
                 message: 'Success Update Room Type',
                 type: 'success',
             })
-            getListRoomType()
         })
         .catch((err) => {
             console.log(err)
@@ -165,6 +164,7 @@ const updateRoomType = () => {
             return
         })
         .finally(() => {
+            getListRoomType()
             removeLoading()
             closeUpdate()
         })
@@ -224,7 +224,6 @@ const showUpdate = (r: RoomType) => {
         nama: r.nama,
         panjang: r.panjang
     }
-    selectedFiles.value = null
     thumbnailList.value = r.images.map((i) => {
         return i.url
     })

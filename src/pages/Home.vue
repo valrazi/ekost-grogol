@@ -208,7 +208,7 @@ onMounted(() => {
               :disabled="rt.activeImage! <= 0" :class="{ 'text-primary': rt.activeImage! > 0 }"><font-awesome-icon
                 :icon="['fas', 'circle-chevron-left']" /></button>
 
-            <img :src="rt.images[rt.activeImage!].url" alt="" class="w-full rounded-lg shadow-md">
+            <img :src="rt.images[rt.activeImage!].url" alt="" class="w-full rounded-lg shadow-md object-fill min-h-[300px] max-h-[300px]">
 
             <button @click="nextImage(rt.id)" class="text-[1.5rem] absolute right-1 top-[40%]"
               :disabled="rt.activeImage == rt.images.length - 1"
@@ -217,7 +217,7 @@ onMounted(() => {
           </div>
           
           <img src="https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/noimage.png" alt="" class="min-w-64 max-w-64 w-64" v-if="!rt.images">
-          <div class="w-full flex flex-col justify-center items-center gap-y-2 min-h-64 max-h-64 text-white">
+          <div class="w-full flex flex-col justify-start items-center gap-y-2 min-h-64 max-h-64 text-white">
             <h1 v-if="rt.rooms.length">
               <span class="text-red-400" v-if="rt.rooms.length == 1">Sisa {{ rt.rooms.length }} Kamar</span>
               <span class="text-yellow-400" v-else>Tersedia {{ rt.rooms.length }} Kamar</span>

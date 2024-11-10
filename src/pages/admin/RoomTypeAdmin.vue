@@ -224,6 +224,7 @@ const showUpdate = (r: RoomType) => {
         nama: r.nama,
         panjang: r.panjang
     }
+    selectedFiles.value = null
     thumbnailList.value = r.images.map((i) => {
         return i.url
     })

@@ -79,7 +79,7 @@ onMounted(() => {
             class="bg-white flex gap-x-4 min-w-[25%] max-w-[30%] justify-around px-2 py-4 rounded-lg
             cursor-pointer">
                 <div>
-                    <h1>Schedule Visit</h1>
+                    <h1>Pembayaran</h1>
                     <h1 class="text-xl font-bold w-[90%]">{{ analytics.booking }} Pembayaran Masuk</h1>
                 </div>
             </div>

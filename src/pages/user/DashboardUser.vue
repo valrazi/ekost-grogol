@@ -13,6 +13,9 @@ const roomTypeSelected = ref<string>()
 const rooms = ref<Room[]>([])
 const roomsSelected = ref<string>()
 
+const tipeDurasi = ref<string>('')
+const lamaDurasi = ref<number>(1)
+
 const activeBooking = ref<Booking>()
 const getLatestBooking = () => {
     setLoading()
@@ -115,6 +118,17 @@ const totalPrice = ref<number>(1)
 const showTransfer = () => {
     v$.value.$touch()
     const start = moment(payloadBooking.value.startDate)
+    switch(tipeDurasi.value) {
+        case 'week':
+        payloadBooking.value.endDate = moment(payloadBooking.value.startDate).add(lamaDurasi.value, 'week').format('YYYY-MM-DD')
+        break;
+        case 'month':
+        payloadBooking.value.endDate = moment(payloadBooking.value.startDate).add(lamaDurasi.value, 'month').format('YYYY-MM-DD')
+        break;
+        case 'year':
+        payloadBooking.value.endDate = moment(payloadBooking.value.startDate).add(lamaDurasi.value, 'year').format('YYYY-MM-DD')
+        break;
+    }
     const end = moment(payloadBooking.value.endDate)
     if (start.isAfter(end)) {
         ElNotification({
@@ -202,8 +216,9 @@ onUnmounted(() => {
             <div class="w-[50%] py-4 h-full bg-white flex flex-col justify-center items-center">
                 <h1>Silahkan lakukan scan QR dibawah</h1>
                 <img src="https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/qr.jpeg" class="w-1/2" alt="">
-                <div class="w-full flex justify-center">
+                <div class="w-full flex flex-col items-center">
                     <h1>Total {{ moneyFormatter.format(totalPrice) }}</h1>
+                    <h1>Durasi Penyewaan {{ moment(payloadBooking.startDate).format('DD MMM YYYY') }} - {{ moment(payloadBooking.endDate).format('DD MMM YYYY') }}</h1>
                 </div>
                 <div class="input-group">
                     <label for="">Bukti Transfer</label>
@@ -237,14 +252,35 @@ onUnmounted(() => {
                             <div class="text-red-500">{{ error.$message }}</div>
                         </div>
                     </div>
-                    <span class=" text-white font-bold text-center translate-y-3">-</span>
-                    <div class="input-group w-full">
+                    <!-- <span class=" text-white font-bold text-center translate-y-3">-</span> -->
+                    <!-- <div class="input-group w-full">
                         <label for="" class="font-semibold text-white">Tanggal Selesai</label>
                         <input type="date" placeholder="Tanggal Selesai" v-model="payloadBooking.endDate">
                         <div v-for="error of v$.endDate.$errors" :key="error.$uid">
                             <div class="text-red-500">{{ error.$message }}</div>
                         </div>
-                    </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="input-group ">
+                <label for="" class="font-semibold text-white">Tipe Penyewaan</label>
+                <select v-model="tipeDurasi">
+                    <option value="" selected disabled>--Pilih Tipe Penyewaan--</option>
+                    <option value="week">Mingguan</option>
+                    <option value="month">Bulanan</option>
+                    <option value="year">Tahunan</option>
+                </select>
+                <div v-for="error of v$.endDate.$errors" :key="error.$uid">
+                    <div class="text-red-500">{{ error.$message }}</div>
+                </div>
+            </div>
+
+            <div class="input-group ">
+                <label for="" class="font-semibold text-white">Durasi Penyewaan</label>
+                <input type="number" v-model="lamaDurasi">
+                <div v-for="error of v$.endDate.$errors" :key="error.$uid">
+                    <div class="text-red-500">{{ error.$message }}</div>
                 </div>
             </div>
 

@@ -170,8 +170,8 @@ onMounted(() => {
   <div class="w-full min-h-dvh">
     <div 
     id="hero"
-    class="flex justify-center items-center flex-col w-full min-h-[500px] bg-cover bg-no-repeat text-white scroll-m-10"
-      style="background-image: url('https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/apartment.jpg')">
+    class="flex justify-center items-center flex-col w-full min-h-[500px] bg-cover bg-center bg-no-repeat text-white scroll-m-10"
+      style="background-image: url('https://pub-1d32d4ccfc5d47758db60374c9329a3a.r2.dev/cover%20depan.jpg')">
       <h1 class="text-[4rem] font-bold">Grogol Mansion</h1>
       <h2 class="text-[2rem] font-semibold">"A Higher Quality for Living"</h2>
       <button
